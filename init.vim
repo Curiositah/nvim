@@ -35,9 +35,9 @@ set encoding=utf-8
 set mouse=a
 let &t_ut=''
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set scrolloff=5
 set autochdir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -225,7 +225,7 @@ Plug 'dkarter/bullets.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Or build from source code by using yarn: https://yarnpkg.com
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 "Plug 'vimwiki/vimwiki'
 
@@ -272,7 +272,7 @@ let g:vmt_fence_closing_text = '/TOC'
 " === vim-airline
 " ===
 let g:airline_powerline_fonts = 0
-let g:airline_theme='fruit_punch'
+let g:airline_theme='dracula'
 
 " ===
 " === vim-snazzy
