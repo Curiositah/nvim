@@ -19,6 +19,7 @@
 set number "显示行号
 set relativenumber "显示相对行号
 set cursorline "当前行下显示一条线
+autocmd InsertEnter * highlight CursorLine guibg=#000550 guifg=fg
 set wrap "文本不会超过屏幕
 set showcmd "show cmd
 set wildmenu "命令提示选择
@@ -200,11 +201,12 @@ Plug '~/my-prototype-plugin'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'dracula/vim'
 
 " 下栏与主题
 Plug 'connorholyday/vim-snazzy'
 Plug 'theniceboy/vim-deus'
-
+        
 
 " markdown预览
 " If you don't have nodejs and yarn
@@ -212,6 +214,7 @@ Plug 'theniceboy/vim-deus'
 " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " If you have nodejs and yarn
+Plug 'dracula/dracula-theme'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " Markdown
@@ -219,6 +222,10 @@ Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
+
+" oceanic theme
+Plug 'mhartington/oceanic-next'
+
 
 
 " Use release branch (recommend)
@@ -277,15 +284,25 @@ let g:airline_theme='dracula'
 " ===
 " === vim-snazzy
 " ===
-colorscheme deus
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors " enable true colors support
-hi NonText ctermfg=gray guifg=grey10
+"colorscheme deus
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"set termguicolors " enable true colors support
+"hi NonText ctermfg=gray guifg=grey10
 "let g:SnazzyTransparent = 1
 "let g:lightline = {
 "\ 'colorscheme': 'snazzy',
 "\ }
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+" Or if you have Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" Theme
+syntax enable
+colorscheme OceanicNext
 
 
 " ===
@@ -295,7 +312,11 @@ hi NonText ctermfg=gray guifg=grey10
 source $XDG_CONFIG_HOME/nvim/md-snippets.vim
 "source $XDG_CONFIG_HOME/nvim/mkdp.vim
 " auto spell
-autocmd BufRead,BufNewFile *.md setlocal spell
+"autocmd BufRead,BufNewFile *.md setlocal spell
+"hi Normal guibg=NONE ctermbg=NONE
+"hi LineNr guibg=NONE ctermbg=NONE
+"hi SignColumn guibg=NONE ctermbg=NONE
+"hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 
 
